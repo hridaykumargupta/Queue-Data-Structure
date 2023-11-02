@@ -1,0 +1,70 @@
+#include<stdio.h>
+#include<stdlib.h>
+#define MAX 5
+int front=-1;
+int rear=-1;
+int queue[MAX];
+void enQueue();
+void deQueue();
+void  display();
+int main()
+{
+	int choice;
+	while(1)
+	{
+	  printf("\nPress 1:enQueue 2:deQueue  3:display  0: exit");
+	  printf("\nEnter your choice:");
+	  scanf("%d",&choice);
+	  
+	  switch(choice)
+	  {
+	  	case 1:enQueue();break;
+	  	case 2:deQueue();break;
+	  	case 3: display();break;
+	  	
+	  	case 0: exit(1);break;
+	  	default:printf("Wrong choice . Press only 0,1,2");
+	  }
+    }
+	return 0;
+}
+
+void enQueue()
+{
+	int element;
+	if(rear==MAX-1)
+	printf("Queue is full");
+	else
+	{
+		
+		if(front==-1)
+		front=0;
+		rear=rear+1;
+		printf("Enter element:");
+		scanf("%d",&element);
+		queue[rear]=element;
+	}
+} 
+  void deQueue()
+  { 
+    if(front==-1 || front>rear)
+    printf("Queue is empty");
+    else
+    {
+	  printf("dequeued element=%d",queue[front]);
+	  front=front+1;  	
+	  }
+  }
+void  display()
+  {
+  	int i;
+  	if(front==-1|| front==rear+1)
+	  printf("Queue  is empty...");
+	  else
+	  {
+	   for(i=front;i<=rear;i++)
+	     printf("%d  ",queue[i]);
+	  }	    
+}
+   
+  
